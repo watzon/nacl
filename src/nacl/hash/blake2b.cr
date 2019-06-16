@@ -29,14 +29,14 @@ module NaCl
         if key
           key_size = key.bytesize
           raise NaCl::LengthError.new("key too short") if key_size < KEYBYTES_MIN
-          raise NaCl::LengthError.new("key too long") if key_size < KEYBYTES_MAX
+          raise NaCl::LengthError.new("key too long") if key_size > KEYBYTES_MAX
         else
           key_size = 0
         end
 
         digest_size ||= BYTES_MAX
         raise LengthError.new("digest size too short") if digest_size < BYTES_MIN
-        raise LengthError.new("digest size too long") if digest_size < BYTES_MAX
+        raise LengthError.new("digest size too long") if digest_size > BYTES_MAX
 
         personal ||= EMPTY_PERSONAL
         personal = Util.zero_pad(PERSONALBYTES, personal)

@@ -22,7 +22,7 @@ module NaCl
     #
     # @return [String] a bunch of zeros
     def prepend_zeros(n, message)
-      (zeros(n).to_a + message.bytes).to_unsafe.to_slice(n + message.bytesize)
+      slice_concat(zeros(n) + message.bytes)
     end
 
     # Remove zeros from the start of a message
@@ -53,7 +53,7 @@ module NaCl
       elsif len > n
         raise LengthError.new("String too long for zero-padding to #{n} bytes")
       else
-        message.to_slice + zeros(n - len)
+        slice_concat(message.to_slice, zeros(n - len))
       end
     end
 
@@ -135,6 +135,12 @@ module NaCl
       check_length(one, 16, "First message")
       check_length(two, 16, "Second message")
       LibSodium.crypto_verify_16(one, two)
+    end
+
+    def slice_concat(*slices)
+      arr = [] of UInt8
+      slices.each { |slice| arr = arr.concat(slice.to_a) }
+      arr.to_unsafe.to_slice(arr.size)
     end
   end
 end
