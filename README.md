@@ -83,7 +83,7 @@ decrypted_bytes = cipher.decrypt(nonce, ciphertext, ad)
   - [ ] Sign
   - [ ] SealedBox
 - [ ] Hashing
-  - [ ] GenericHash
+  - [x] GenericHash (Blake2b)
   - [ ] ShortHash
 - [ ] Password Hashing
   - [ ] Argon2

@@ -6,8 +6,12 @@ lib LibSodium
   CRYPTO_CORE_ED25519_UNIFORMBYTES                  = 32
   CRYPTO_KDF_BLAKE2B_BYTES_MAX                      = 64
   CRYPTO_KDF_BLAKE2B_BYTES_MIN                      = 16
+  CRYPTO_KDF_BLAKE2B_KEYBYTES_MIN                   = 16
+  CRYPTO_KDF_BLAKE2B_KEYBYTES_MAX                   = 64
   CRYPTO_KDF_BLAKE2B_CONTEXTBYTES                   =  8
   CRYPTO_KDF_BLAKE2B_KEYBYTES                       = 32
+  CRYPTO_KDF_BLAKE2B_SALTBYTES                      = 16
+  CRYPTO_KDF_BLAKE2B_PERSONALBYTES                  = 16
   CRYPTO_KX_PUBLICKEYBYTES                          = 32
   CRYPTO_KX_SECRETKEYBYTES                          = 32
   CRYPTO_KX_SEEDBYTES                               = 32
