@@ -4,6 +4,6 @@ lib LibSodium
   alias X__Uint32T = LibC::UInt
 end
 
-require "./crypto.cr"
-require "./randombytes.cr"
-require "./utils.cr"
+require "./sodium/crypto.cr"
+require "./sodium/randombytes.cr"
+require "./sodium/utils.cr"

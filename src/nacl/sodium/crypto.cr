@@ -26,6 +26,11 @@ lib LibSodium
   CRYPTO_AEAD_XCHACHA20POLY1305_IETF_NPUBBYTES        =                      24
   CRYPTO_AEAD_XCHACHA20POLY1305_IETF_NSECBYTES        =                       0
   CRYPTO_AEAD_XCHACHA20POLY1305_IETF_ABYTES           =                      16
+  CRYPTO_SIGN_ED25519_SEEDBYTES                       =                      32
+  CRYPTO_SIGN_ED25519_MESSAGEBYTES_MAX                = 1.7976931348623157e+308
+  CRYPTO_SIGN_ED25519_BYTES                           =                      64
+  CRYPTO_SIGN_ED25519_PUBLICKEYBYTES                  =                      32
+  CRYPTO_SIGN_ED25519_SECRETKEYBYTES                  =                      64
   alias CryptoAuthHmacsha512256State = CryptoAuthHmacsha512State
   alias CryptoGenerichashState = CryptoGenerichashBlake2bState
   alias CryptoOnetimeauthState = CryptoOnetimeauthPoly1305State
@@ -468,16 +473,11 @@ lib LibSodium
   fun crypto_sign_bytes : LibC::SizeT
   fun crypto_sign_detached(sig : UInt8*, siglen_p : LibC::ULongLong*, m : UInt8*, mlen : LibC::ULongLong, sk : UInt8*) : LibC::Int
   fun crypto_sign_ed25519(sm : UInt8*, smlen_p : LibC::ULongLong*, m : UInt8*, mlen : LibC::ULongLong, sk : UInt8*) : LibC::Int
-  fun crypto_sign_ed25519_bytes : LibC::SizeT
   fun crypto_sign_ed25519_detached(sig : UInt8*, siglen_p : LibC::ULongLong*, m : UInt8*, mlen : LibC::ULongLong, sk : UInt8*) : LibC::Int
   fun crypto_sign_ed25519_keypair(pk : UInt8*, sk : UInt8*) : LibC::Int
-  fun crypto_sign_ed25519_messagebytes_max : LibC::SizeT
   fun crypto_sign_ed25519_open(m : UInt8*, mlen_p : LibC::ULongLong*, sm : UInt8*, smlen : LibC::ULongLong, pk : UInt8*) : LibC::Int
   fun crypto_sign_ed25519_pk_to_curve25519(curve25519_pk : UInt8*, ed25519_pk : UInt8*) : LibC::Int
-  fun crypto_sign_ed25519_publickeybytes : LibC::SizeT
-  fun crypto_sign_ed25519_secretkeybytes : LibC::SizeT
   fun crypto_sign_ed25519_seed_keypair(pk : UInt8*, sk : UInt8*, seed : UInt8*) : LibC::Int
-  fun crypto_sign_ed25519_seedbytes : LibC::SizeT
   fun crypto_sign_ed25519_sk_to_curve25519(curve25519_sk : UInt8*, ed25519_sk : UInt8*) : LibC::Int
   fun crypto_sign_ed25519_sk_to_pk(pk : UInt8*, sk : UInt8*) : LibC::Int
   fun crypto_sign_ed25519_sk_to_seed(seed : UInt8*, sk : UInt8*) : LibC::Int

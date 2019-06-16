@@ -31,7 +31,13 @@ sudo yum install libsodium
 
 ```crystal
 require "nacl"
+```
 
+#### Secret Key Encryption
+
+##### XChaCha20Poly1305
+
+```crystal
 # Generate a random secret key
 key = NaCl::AEAD::XChaCha20Poly1305.keygen
 
@@ -66,30 +72,66 @@ decrypted_bytes = cipher.decrypt(nonce, ciphertext, ad)
 # => Bytes[...]
 ```
 
+#### Digital Signatures
+
+##### Signer's Perspective
+
+```crystal
+# Generate a new random signing key
+signing_key = NaCl::SigningKey.generate
+
+# Message to be signed
+message = "Crystal is amazing
+
+# Sign a message with the signing key
+signature = signing_key.sign(message)
+
+# Obtain the verify key for a given signing key
+verify_key = signing_key.verify_key
+
+# Convert the verify key to a string to send it to a third party
+verify_key.to_s
+```
+
+##### Verifier's Perspective
+
+```crystal
+# Create a VerifyKey object from a public key
+verify_key = NaCl::VerifyKey.new(verify_key.bytes)
+
+# Check the validity of a message's signature
+# Will raise NaCl::BadSignatureError if the signature check fails
+verify_key.verify(signature, message)
+```
+
 ## Supported
 
-- [ ] Secret Key Cryptography
-  - [ ] SecretBox
-  - [ ] SecretStream
-  - [ ] Auth
-  - [ ] AEAD
-    - [ ] ChaCha20-Poly1305
-      - [ ] Original ChaCha20
-      - [ ] IETF ChaCha20
-      - [x] XChaCha20
-    - [ ] AES256-GCM
-- [ ] Public Key Cryptography
-  - [ ] Box
-  - [ ] Sign
-  - [ ] SealedBox
-- [ ] Hashing
-  - [x] GenericHash (Blake2b)
-  - [ ] ShortHash
+- [ ] SimpleBox (simplified cryptography)
+- [ ] Secret-key Encryption
+  - [ ] [NaCl::SecretBox](#)
+  - [x] [NaCl::AEAD::XChaCha20Poly1305](#)
+  - [ ] [NaCl::AEAD::ChaCha20Poly1305IETF](#)
+  - [ ] [NaCl::AEAD::ChaCha20Poly1305Legacy](#)
+- [ ] Public-key Encryption
+  -[ ] [NaCl::Box](#)
+  -[ ] [NaCl::PrivateKey](#)
+  -[ ] [NaCl::PublicKey](#)
+- [x] Digital Signatures
+  - [x] [NaCl::SigningKey](#)
+  - [x] [NaCl::VerifyKey](#)
+- [ ] HMAC
+  - [ ] [NaCl::HMAC::SHA256](#)
+  - [ ] [NaCl::HMAC::SHA512256](#)
+- [ ] Hash Functions
+  - [ ] [NaCl::Hash](#)
 - [ ] Password Hashing
-  - [ ] Argon2
-- [ ] Key Derivation
-- [ ] Key Exchange
-- [ ] Others
+  - [ ] [NaCl::PasswordHash](#)
+- [ ] Scalar Manipulation
+  - [ ] [NaCl::GroupElement](#)
+- [ ] One-time Authentication
+- [ ] Random Number Generation
+- [x] Utilities
+  - [x] Constant-time byte comparison
 
 ## Contributing
 

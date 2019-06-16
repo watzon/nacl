@@ -22,7 +22,7 @@ module NaCl
     #
     # @return [String] a bunch of zeros
     def prepend_zeros(n, message)
-      zeros(n) + message.to_slice
+      (zeros(n).to_a + message.bytes).to_unsafe.to_slice(n + message.bytesize)
     end
 
     # Remove zeros from the start of a message
@@ -72,6 +72,69 @@ module NaCl
       end
 
       true
+    end
+
+    # Compare two 64 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify64(one, two)
+      return false unless two.bytesize == 64 && one.bytesize == 64
+      LibSodium.crypto_verify_64(one, two)
+    end
+
+    # Compare two 64 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify64!(one, two)
+      check_length(one, 64, "First message")
+      check_length(two, 64, "Second message")
+      LibSodium.crypto_verify_64(one, two)
+    end
+
+    # Compare two 32 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify32(one, two)
+      return false unless two.bytesize == 32 && one.bytesize == 32
+      LibSodium.crypto_verify_32(one, two)
+    end
+
+    # Compare two 32 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify32!(one, two)
+      check_length(one, 32, "First message")
+      check_length(two, 32, "Second message")
+      LibSodium.crypto_verify_32(one, two)
+    end
+
+    # Compare two 16 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify16(one, two)
+      return false unless two.bytesize == 16 && one.bytesize == 16
+      LibSodium.crypto_verify_16(one, two)
+    end
+
+    # Compare two 16 byte strings in constant time
+    #
+    # This should help to avoid timing attacks for string comparisons in your
+    # application.  Note that many of the functions (such as HmacSha512#verify)
+    # use this method under the hood already.
+    def verify16!(one, two)
+      check_length(one, 16, "First message")
+      check_length(two, 16, "Second message")
+      LibSodium.crypto_verify_16(one, two)
     end
   end
 end
