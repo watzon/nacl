@@ -107,18 +107,18 @@ verify_key.verify(signature, message)
 ## Supported
 
 - [ ] SimpleBox (simplified cryptography)
-- [ ] Secret-key Encryption
+- [ ] [Secret-key Encryption](https://watzon.github.io/nacl/NaCl/AEAD.html)
   - [ ] [NaCl::SecretBox](#)
-  - [x] [NaCl::AEAD::XChaCha20Poly1305](#)
+  - [x] [NaCl::AEAD::XChaCha20Poly1305](https://watzon.github.io/nacl/NaCl/AEAD/XChaCha20Poly1305.html)
   - [ ] [NaCl::AEAD::ChaCha20Poly1305IETF](#)
   - [ ] [NaCl::AEAD::ChaCha20Poly1305Legacy](#)
 - [ ] Public-key Encryption
   - [ ] [NaCl::Box](#)
   - [ ] [NaCl::PrivateKey](#)
   - [ ] [NaCl::PublicKey](#)
-- [x] Digital Signatures
-  - [x] [NaCl::SigningKey](#)
-  - [x] [NaCl::VerifyKey](#)
+- [x] [Digital Signatures](https://watzon.github.io/nacl/NaCl/Signatures/Ed25519.html)
+  - [x] [NaCl::SigningKey](https://watzon.github.io/nacl/NaCl/Signatures/Ed25519/SigningKey.html)
+  - [x] [NaCl::VerifyKey](https://watzon.github.io/nacl/NaCl/Signatures/Ed25519/VerifyKey.html)
 - [ ] HMAC
   - [ ] [NaCl::HMAC::SHA256](#)
   - [ ] [NaCl::HMAC::SHA512256](#)
@@ -130,8 +130,7 @@ verify_key.verify(signature, message)
   - [ ] [NaCl::GroupElement](#)
 - [ ] One-time Authentication
 - [ ] Random Number Generation
-- [x] Utilities
-  - [x] Constant-time byte comparison
+- [x] [Utilities](https://watzon.github.io/nacl/NaCl/Util.html)
 
 ## Contributing
 
