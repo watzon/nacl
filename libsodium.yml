@@ -1,0 +1,18 @@
+name: LibSodium
+cflags: ""
+ldflags: "-lsodium"
+packages: ""
+destdir: src/libsodium
+definitions:
+  crypto:
+    description: libsodium cryptographic functions
+    includes: [ sodium.h ]
+    prefixes: [ crypto_ ]
+  randombytes:
+    description: libsodium random byte generation
+    includes: [ sodium.h ]
+    prefixes: [ randombytes_ ]
+  utils:
+    description: libsodium utilities
+    includes: [ sodium.h ]
+    prefixes: [ sodium_ ]

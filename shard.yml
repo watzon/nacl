@@ -1,0 +1,15 @@
+name: nacl
+version: 0.1.0
+
+description: |
+  Crystal bindings to libsodium
+
+authors:
+  - Chris Watson <chris@watzon.me>
+
+libraries:
+  libsodium: ~> 1.0.17
+
+crystal: 0.29.0
+
+license: MIT
