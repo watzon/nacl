@@ -113,9 +113,9 @@ verify_key.verify(signature, message)
   - [ ] [NaCl::AEAD::ChaCha20Poly1305IETF](#)
   - [ ] [NaCl::AEAD::ChaCha20Poly1305Legacy](#)
 - [ ] Public-key Encryption
-  -[ ] [NaCl::Box](#)
-  -[ ] [NaCl::PrivateKey](#)
-  -[ ] [NaCl::PublicKey](#)
+  - [ ] [NaCl::Box](#)
+  - [ ] [NaCl::PrivateKey](#)
+  - [ ] [NaCl::PublicKey](#)
 - [x] Digital Signatures
   - [x] [NaCl::SigningKey](#)
   - [x] [NaCl::VerifyKey](#)
