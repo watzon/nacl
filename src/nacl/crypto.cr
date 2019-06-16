@@ -1,4 +1,4 @@
-require "./crypto/aead/*"
+require "./aead/*"
 
 module NaCl
   module Crypto

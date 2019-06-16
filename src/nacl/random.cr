@@ -1,8 +1,8 @@
 module NaCl
-  module RandomBytes
+  module Random
     extend self
 
-    def randombytes_buf(buffer : Indexable(UInt8))
+    def random_bytes(buffer : Indexable(UInt8))
       LibSodium.randombytes_buf(buffer, buffer.size)
       buffer
     end

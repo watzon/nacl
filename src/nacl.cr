@@ -1,5 +1,6 @@
 require "./libsodium/*"
-require "./nacl/random_bytes"
+require "./nacl/error"
+require "./nacl/random"
 require "./nacl/crypto"
 
 module NaCl
