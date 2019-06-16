@@ -24,25 +24,3 @@ module NaCl
   alias SigningKey = NaCl::Signatures::Ed25519::SigningKey
   alias VerifyKey = NaCl::Signatures::Ed25519::VerifyKey
 end
-
-# Generate a new random signing key
-signing_key = NaCl::SigningKey.generate
-
-# Message to be signed
-message = "Crystal is amazing!"
-
-# Sign a message with the signing key
-signature = signing_key.sign(message)
-
-# Obtain the verify key for a given signing key
-verify_key = signing_key.verify_key
-
-# Convert the verify key to a string to send it to a third party
-verify_key.to_s
-
-# Create a VerifyKey object from a public key
-verify_key = NaCl::VerifyKey.new(verify_key.bytes)
-
-# Check the validity of a message's signature
-# Will raise RbNaCl::BadSignatureError if the signature check fails
-puts verify_key.verify(signature, message)
