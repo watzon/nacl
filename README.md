@@ -123,7 +123,7 @@ verify_key.verify(signature, message)
   - [ ] NaCl::HMAC::SHA256
   - [ ] NaCl::HMAC::SHA512256
 - [ ] Hash Functions
-  - [ ] NaCl::Hash
+  - [x] [NaCl::Hash::Blake2b](https://watzon.github.io/nacl/NaCl/Hash/Blake2b.html)
 - [ ] Password Hashing
   - [ ] NaCl::PasswordHash
 - [ ] Scalar Manipulation

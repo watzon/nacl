@@ -18,7 +18,7 @@ module NaCl
         def verify(signature, message)
           Util.check_length(signature, signature_bytes, "signature")
 
-          sig_and_msg = (signature.to_a + message.bytes)
+          sig_and_msg = (signature.bytes + message.bytes)
             .to_unsafe
             .to_slice(signature.bytesize + message.bytesize)
 
