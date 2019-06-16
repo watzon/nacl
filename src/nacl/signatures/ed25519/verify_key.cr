@@ -31,7 +31,7 @@ module NaCl
           true
         end
 
-        def signature_bytes
+        def self.signature_bytes
           Ed25519::SIGNATUREBYTES
         end
 
