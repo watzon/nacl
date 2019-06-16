@@ -33,9 +33,9 @@ sudo yum install libsodium
 require "nacl"
 ```
 
-#### Secret Key Encryption
+### Secret Key Encryption
 
-##### XChaCha20Poly1305
+#### XChaCha20Poly1305
 
 ```crystal
 # Generate a random secret key
@@ -72,9 +72,9 @@ decrypted_bytes = cipher.decrypt(nonce, ciphertext, ad)
 # => Bytes[...]
 ```
 
-#### Digital Signatures
+### Digital Signatures
 
-##### Signer's Perspective
+#### Signer's Perspective
 
 ```crystal
 # Generate a new random signing key
@@ -93,7 +93,7 @@ verify_key = signing_key.verify_key
 verify_key.to_s
 ```
 
-##### Verifier's Perspective
+#### Verifier's Perspective
 
 ```crystal
 # Create a VerifyKey object from a public key
