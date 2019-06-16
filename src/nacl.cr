@@ -21,8 +21,8 @@ require "./nacl/aead/chacha20poly1305_ietf"
 require "./nacl/aead/xchacha20poly1305_ietf"
 
 module NaCl
-  SigningKey = NaCl::Signatures::Ed25519::SigningKey
-  VerifyKey = NaCl::Signatures::Ed25519::VerifyKey
+  alias SigningKey = NaCl::Signatures::Ed25519::SigningKey
+  alias VerifyKey = NaCl::Signatures::Ed25519::VerifyKey
 end
 
 # Generate a new random signing key
