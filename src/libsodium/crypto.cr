@@ -1,26 +1,31 @@
 @[Link(ldflags: "-lsodium")]
 lib LibSodium
-  CRYPTO_CORE_ED25519_BYTES                         = 32
-  CRYPTO_CORE_ED25519_NONREDUCEDSCALARBYTES         = 64
-  CRYPTO_CORE_ED25519_SCALARBYTES                   = 32
-  CRYPTO_CORE_ED25519_UNIFORMBYTES                  = 32
-  CRYPTO_KDF_BLAKE2B_BYTES_MAX                      = 64
-  CRYPTO_KDF_BLAKE2B_BYTES_MIN                      = 16
-  CRYPTO_KDF_BLAKE2B_KEYBYTES_MIN                   = 16
-  CRYPTO_KDF_BLAKE2B_KEYBYTES_MAX                   = 64
-  CRYPTO_KDF_BLAKE2B_CONTEXTBYTES                   =  8
-  CRYPTO_KDF_BLAKE2B_KEYBYTES                       = 32
-  CRYPTO_KDF_BLAKE2B_SALTBYTES                      = 16
-  CRYPTO_KDF_BLAKE2B_PERSONALBYTES                  = 16
-  CRYPTO_KX_PUBLICKEYBYTES                          = 32
-  CRYPTO_KX_SECRETKEYBYTES                          = 32
-  CRYPTO_KX_SEEDBYTES                               = 32
-  CRYPTO_KX_SESSIONKEYBYTES                         = 32
-  CRYPTO_PWHASH_ARGON2ID_ALG_ARGON2ID13             =  2
-  CRYPTO_PWHASH_ARGON2I_ALG_ARGON2I13               =  1
-  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_MESSAGE =  0
-  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_PUSH    =  1
-  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_REKEY   =  2
+  CRYPTO_CORE_ED25519_BYTES                           =                      32
+  CRYPTO_CORE_ED25519_NONREDUCEDSCALARBYTES           =                      64
+  CRYPTO_CORE_ED25519_SCALARBYTES                     =                      32
+  CRYPTO_CORE_ED25519_UNIFORMBYTES                    =                      32
+  CRYPTO_KDF_BLAKE2B_BYTES_MAX                        =                      64
+  CRYPTO_KDF_BLAKE2B_BYTES_MIN                        =                      16
+  CRYPTO_KDF_BLAKE2B_KEYBYTES_MIN                     =                      16
+  CRYPTO_KDF_BLAKE2B_KEYBYTES_MAX                     =                      64
+  CRYPTO_KDF_BLAKE2B_CONTEXTBYTES                     =                       8
+  CRYPTO_KDF_BLAKE2B_KEYBYTES                         =                      32
+  CRYPTO_KDF_BLAKE2B_SALTBYTES                        =                      16
+  CRYPTO_KDF_BLAKE2B_PERSONALBYTES                    =                      16
+  CRYPTO_KX_PUBLICKEYBYTES                            =                      32
+  CRYPTO_KX_SECRETKEYBYTES                            =                      32
+  CRYPTO_KX_SEEDBYTES                                 =                      32
+  CRYPTO_KX_SESSIONKEYBYTES                           =                      32
+  CRYPTO_PWHASH_ARGON2ID_ALG_ARGON2ID13               =                       2
+  CRYPTO_PWHASH_ARGON2I_ALG_ARGON2I13                 =                       1
+  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_MESSAGE   =                       0
+  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_PUSH      =                       1
+  CRYPTO_SECRETSTREAM_XCHACHA20POLY1305_TAG_REKEY     =                       2
+  CRYPTO_AEAD_XCHACHA20POLY1305_IETF_MESSAGEBYTES_MAX = 1.7976931348623157e+308
+  CRYPTO_AEAD_XCHACHA20POLY1305_IETF_KEYBYTES         =                      32
+  CRYPTO_AEAD_XCHACHA20POLY1305_IETF_NPUBBYTES        =                      24
+  CRYPTO_AEAD_XCHACHA20POLY1305_IETF_NSECBYTES        =                       0
+  CRYPTO_AEAD_XCHACHA20POLY1305_IETF_ABYTES           =                      16
   alias CryptoAuthHmacsha512256State = CryptoAuthHmacsha512State
   alias CryptoGenerichashState = CryptoGenerichashBlake2bState
   alias CryptoOnetimeauthState = CryptoOnetimeauthPoly1305State
@@ -66,14 +71,13 @@ lib LibSodium
   fun crypto_aead_chacha20poly1305_messagebytes_max : LibC::SizeT
   fun crypto_aead_chacha20poly1305_npubbytes : LibC::SizeT
   fun crypto_aead_chacha20poly1305_nsecbytes : LibC::SizeT
-  fun crypto_aead_xchacha20poly1305_ietf_abytes : LibC::SizeT
   fun crypto_aead_xchacha20poly1305_ietf_decrypt(m : UInt8*, mlen_p : LibC::ULongLong*, nsec : UInt8*, c : UInt8*, clen : LibC::ULongLong, ad : UInt8*, adlen : LibC::ULongLong, npub : UInt8*, k : UInt8*) : LibC::Int
   fun crypto_aead_xchacha20poly1305_ietf_decrypt_detached(m : UInt8*, nsec : UInt8*, c : UInt8*, clen : LibC::ULongLong, mac : UInt8*, ad : UInt8*, adlen : LibC::ULongLong, npub : UInt8*, k : UInt8*) : LibC::Int
   fun crypto_aead_xchacha20poly1305_ietf_encrypt(c : UInt8*, clen_p : LibC::ULongLong*, m : UInt8*, mlen : LibC::ULongLong, ad : UInt8*, adlen : LibC::ULongLong, nsec : UInt8*, npub : UInt8*, k : UInt8*) : LibC::Int
   fun crypto_aead_xchacha20poly1305_ietf_encrypt_detached(c : UInt8*, mac : UInt8*, maclen_p : LibC::ULongLong*, m : UInt8*, mlen : LibC::ULongLong, ad : UInt8*, adlen : LibC::ULongLong, nsec : UInt8*, npub : UInt8*, k : UInt8*) : LibC::Int
-  fun crypto_aead_xchacha20poly1305_ietf_keybytes : LibC::SizeT
   fun crypto_aead_xchacha20poly1305_ietf_keygen(k : UInt8[32])
   fun crypto_aead_xchacha20poly1305_ietf_messagebytes_max : LibC::SizeT
+  fun crypto_aead_xchacha20poly1305_ietf_keybytes : LibC::SizeT
   fun crypto_aead_xchacha20poly1305_ietf_npubbytes : LibC::SizeT
   fun crypto_aead_xchacha20poly1305_ietf_nsecbytes : LibC::SizeT
   fun crypto_auth(out : UInt8*, in : UInt8*, inlen : LibC::ULongLong, k : UInt8*) : LibC::Int
@@ -601,5 +605,4 @@ lib LibSodium
   struct CryptoSignEd25519phState
     hs : CryptoHashSha512State
   end
-
 end

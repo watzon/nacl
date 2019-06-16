@@ -10,7 +10,7 @@ module NaCl
     #
     # @return [String] A nice collection of zeros
     def zeros(n = 32)
-      "\0" * n
+      ("\0" * n).to_slice
     end
 
     # Prepends a message with zeros
@@ -22,7 +22,7 @@ module NaCl
     #
     # @return [String] a bunch of zeros
     def prepend_zeros(n, message)
-      zeros(n) + message
+      zeros(n) + message.to_slice
     end
 
     # Remove zeros from the start of a message
@@ -49,12 +49,29 @@ module NaCl
     def zero_pad(n, message)
       len = message.bytesize
       if len == n
-        message
+        message.to_slice
       elsif len > n
         raise LengthError.new("String too long for zero-padding to #{n} bytes")
       else
-        message + zeros(n - len)
+        message.to_slice + zeros(n - len)
       end
+    end
+
+    # Check the length of the passed in collection
+    #
+    # In several places through the codebase we have to be VERY strict with
+    # what length of string we accept.  This method supports that.
+    def check_length(collection, length, description)
+      if collection.empty?
+        # code below is run only in test cases
+        raise LengthError.new("#{description} was empty (Expected size of #{length.to_i})")
+      end
+
+      if collection.bytesize != length.to_i
+        raise LengthError.new("#{description} was #{collection.bytesize} bytes (Expected #{length.to_i})")
+      end
+
+      true
     end
   end
 end
