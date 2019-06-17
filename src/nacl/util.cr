@@ -22,7 +22,7 @@ module NaCl
     #
     # @return [String] a bunch of zeros
     def prepend_zeros(n, message)
-      slice_concat(zeros(n) + message.bytes)
+      slice_concat(zeros(n), message.bytes)
     end
 
     # Remove zeros from the start of a message

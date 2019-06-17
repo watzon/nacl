@@ -18,9 +18,7 @@ module NaCl
         def verify(signature, message)
           Util.check_length(signature, signature_bytes, "signature")
 
-          sig_and_msg = (signature.bytes + message.bytes)
-            .to_unsafe
-            .to_slice(signature.bytesize + message.bytesize)
+          sig_and_msg = Util.slice_concat(signature, message.bytes)
 
           buffer = Util.zeros(sig_and_msg.bytesize)
           buffer_len = Util.zeros(64).map(&.to_u64)
